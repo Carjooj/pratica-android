@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'com.example.preprova'
-    compileSdk 26
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.preprova"

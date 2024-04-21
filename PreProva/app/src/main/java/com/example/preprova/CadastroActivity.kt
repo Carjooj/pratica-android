@@ -25,15 +25,6 @@ class CadastroActivity : AppCompatActivity() {
         super.onCreate(bundle)
         setContentView(R.layout.cadastro_layout)
 
-        val sp = getSharedPreferences("Restaurantes", Context.MODE_PRIVATE)
-
-        fun salvarPrefs(array : ArrayList<Restaurante>) {
-            var arrayString = gson.toJson(array)
-            with (sp.edit()) {
-                putString("array", arrayString)
-                apply()
-            }
-        }
 
         var i: Long = 0;
 
@@ -70,11 +61,19 @@ class CadastroActivity : AppCompatActivity() {
         }
 
         btnLista.setOnClickListener{
-            Log.i("arraysp", sp.getString("array", " ").toString())
 
             val intent: Intent = Intent(this, ListaActivity::class.java)
             startActivity(intent)
         }
 
+    }
+
+    fun salvarPrefs(array : ArrayList<Restaurante>) {
+        val sp = getSharedPreferences("Restaurantes", Context.MODE_PRIVATE)
+        var arrayString = gson.toJson(array)
+        with (sp.edit()) {
+            putString("array", arrayString)
+            apply()
+        }
     }
 }
